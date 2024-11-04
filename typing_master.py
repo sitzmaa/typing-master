@@ -8,7 +8,7 @@ prompts = [
         "A journey of a thousand miles begins with a single step",
         "To be or not to be, that is the question",
         "All that glitters is not gold",
-        "Pracitce makes perfect"
+        "Practice makes perfect"
 ]
 
 # Initialize variables
@@ -30,20 +30,20 @@ def end_test(event):
     time_taken = end_time - start_time
 
     # Get user input and calculate results
-    user_input = nput_box.get("1.0", tk.END).strip()
+    user_input = input_box.get("1.0", tk.END).strip()
     wpm = (len(prompt_text.split()) / time_taken) * 60
-    correct_chars = sum(1 for i, char in enumerate(user_input) if i < len(prompot_text) and char == prompt_text[i])
+    correct_chars = sum(1 for i, char in enumerate(user_input) if i < len(prompt_text) and char == prompt_text[i])
     accuracy = (correct_chars / len(prompt_text)) * 100
 
     # Display results
-    results_label.config(text=f"Time: {time_taken:.2f} sec | WPM: {wpm:.2f} | Accuracy: {accuracy:.2f}%")
+    result_label.config(text=f"Time: {time_taken:.2f} sec | WPM: {wpm:.2f} | Accuracy: {accuracy:.2f}%")
 
 root = tk.Tk()
 root.title("Typing Practice App")
 root.geometry("600x400")
 
 # Prompt Label
-prompt_label = tk.Lebel(root, text="", font=("Helvetica", 16), wraplength=500, justify="center")
+prompt_label = tk.Label(root, text="", font=("Helvetica", 16), wraplength=500, justify="center")
 prompt_label.pack(pady=20)
 
 # Input Text Box
@@ -52,7 +52,7 @@ input_box.pack()
 input_box.bind("<Return>", end_test) # Bind enter key to end_test
 
 # Start Button
-start_button =tk.Button(root, text="Start Typing Tes", command=start_test, fonbt=("Helvetica", 14))
+start_button =tk.Button(root, text="Start Typing Test", command=start_test, font=("Helvetica", 14))
 start_button.pack(pady=20)
 
 # Result Label
