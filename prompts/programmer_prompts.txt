@@ -1,0 +1,9 @@
+Write code as if the next person maintaining it is a serial killer who knows where you live.
+
+In programming, debugging is twice as hard as writing the code in the first place.
+
+There are only two hard things in computer science: cache invalidation and naming things.
+
+To understand recursion, one must first understand recursion.
+
+Code is like humor. When you have to explain it, it’s bad.
