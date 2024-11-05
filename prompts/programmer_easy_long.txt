@@ -1,0 +1,76 @@
+def bubble_sort(arr):
+    """Sort an array using the bubble sort algorithm."""
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
+
+# Test bubble sort
+arr = [64, 34, 25, 12, 22, 11, 90]
+sorted_arr = bubble_sort(arr)
+print(f"Sorted array: {sorted_arr}")
+[[END]]
+def simple_calculator():
+    """A simple command-line calculator."""
+    print("Welcome to the simple calculator!")
+    while True:
+        num1 = float(input("Enter first number (or type 'exit' to quit): "))
+        operation = input("Enter operation (+, -, *, /): ")
+        num2 = float(input("Enter second number: "))
+        
+        if operation == '+':
+            result = num1 + num2
+        elif operation == '-':
+            result = num1 - num2
+        elif operation == '*':
+            result = num1 * num2
+        elif operation == '/':
+            if num2 != 0:
+                result = num1 / num2
+            else:
+                return "Cannot divide by zero!"
+        else:
+            return "Invalid operation!"
+
+        print(f"Result: {result}")
+
+# Uncomment to run the calculator
+# simple_calculator()
+[[END]]
+def prime_factors(n):
+    """Return the prime factors of a given number."""
+    factors = []
+    divisor = 2
+    while n >= 2:
+        if n % divisor == 0:
+            factors.append(divisor)
+            n //= divisor
+        else:
+            divisor += 1
+    return factors
+
+# Find prime factors of a number
+number = 56
+print(f"Prime factors of {number}: {prime_factors(number)}")
+[[END]]
+def power(base, exp):
+    """Calculate power using recursion."""
+    if exp == 0:
+        return 1
+    return base * power(base, exp - 1)
+
+# Calculate 2 raised to the power of 10
+print(f"2 raised to the power of 10 is: {power(2, 10)}")
+
+def char_frequency(s):
+    """Count the frequency of characters in a string."""
+    freq = {}
+    for char in s:
+        freq[char] = freq.get(char, 0) + 1
+    return freq
+
+# Count character frequency in a sample string
+print(char_frequency("hello world"))
+[[END]]

@@ -1,0 +1,86 @@
+def calculate_postfix(expression):
+    """Evaluate a postfix expression."""
+    stack = []
+    for token in expression.split():
+        if token.isdigit():
+            stack.append(int(token))
+        else:
+            b, a = stack.pop(), stack.pop()
+            if token == '+':
+                stack.append(a + b)
+            elif token == '-':
+                stack.append(a - b)
+            elif token == '*':
+                stack.append(a * b)
+            elif token == '/':
+                stack.append(a / b)
+    return stack[0]
+
+# Evaluate a postfix expression
+print(calculate_postfix("3 4 + 2 * 7 /"))
+[[END]]
+
+def lru_cache(max_size):
+    """Least Recently Used (LRU) cache decorator."""
+    def decorator(fn):
+        cache = {}
+        order = []
+
+        def wrapper(*args):
+            if args in cache:
+                order.remove(args)
+                order.append(args)
+                return cache[args]
+            result = fn(*args)
+            if len(cache) >= max_size:
+                oldest = order.pop(0)
+                del cache[oldest]
+            cache[args] = result
+            order.append(args)
+            return result
+        return wrapper
+    return decorator
+
+@lru_cache(max_size=3)
+def compute_square(n):
+    return n * n
+
+# Call the function
+print(compute_square(2))
+print(compute_square(3))
+print(compute_square(2))  # Should hit the cache
+[[END]]
+
+def create_adjacency_list(edges):
+    """Create an adjacency list from a list of edges."""
+    graph = {}
+    for start, end in edges:
+        if start not in graph:
+            graph[start] = []
+        graph[start].append(end)
+    return graph
+
+# Sample edges
+edges = [('A', 'B'), ('A', 'C'), ('B', 'D')]
+print(create_adjacency_list(edges))
+[[END]]
+
+def knapsack(weights, values, capacity):
+    """Solve the 0/1 knapsack problem using dynamic programming."""
+    n = len(values)
+    dp = [[0] * (capacity + 1) for _ in range(n + 1)]
+
+    for i in range(1, n + 1):
+        for w in range(1, capacity + 1):
+            if weights[i - 1] <= w:
+                dp[i][w] = max(dp[i - 1][w], dp[i - 1][w - weights[i - 1]] + values[i - 1])
+            else:
+                dp[i][w] = dp[i - 1][w]
+    return dp[n][capacity]
+
+# Test knapsack function
+weights = [1, 2, 3]
+values = [10, 15, 40]
+capacity = 6
+print(knapsack(weights, values, capacity))
+[[END]]

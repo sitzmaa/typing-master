@@ -1,0 +1,53 @@
+# This program checks if a string is a palindrome
+def is_palindrome(s):
+    return s == s[::-1]
+
+user_input = input("Enter a string: ")
+print("The string is a palindrome." if is_palindrome(user_input) else "The string is not a palindrome.")
+[[END]]
+# This program calculates the factorial of a number
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+number = int(input("Enter a number: "))
+print("Factorial:", factorial(number))
+[[END]]
+# This program implements a simple calculator
+def calculator(op, a, b):
+    if op == '+':
+        return a + b
+    elif op == '-':
+        return a - b
+    elif op == '*':
+        return a * b
+    elif op == '/':
+        return a / b
+    else:
+        return "Invalid operation"
+
+operation = input("Enter operation (+, -, *, /): ")
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+print("Result:", calculator(operation, num1, num2))
+[[END]]
+# This program finds common elements in two lists
+def common_elements(list1, list2):
+    return list(set(list1) & set(list2))
+
+list_a = [1, 2, 3, 4, 5]
+list_b = [4, 5, 6, 7, 8]
+print("Common elements:", common_elements(list_a, list_b))
+[[END]]
+# This program generates a random password
+import random
+import string
+
+def generate_password(length):
+    characters = string.ascii_letters + string.digits + string.punctuation
+    return ''.join(random.choice(characters) for i in range(length))
+
+password_length = int(input("Enter password length: "))
+print("Generated password:", generate_password(password_length))

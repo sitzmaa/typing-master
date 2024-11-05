@@ -1,0 +1,51 @@
+def fibonacci(n):
+    """Return a list of Fibonacci numbers up to n."""
+    fib_seq = [0, 1]
+    while len(fib_seq) < n:
+        fib_seq.append(fib_seq[-1] + fib_seq[-2])
+    return fib_seq
+
+# Generate Fibonacci sequence of length 10
+print(fibonacci(10))
+
+[[END]]
+
+def is_palindrome(s):
+    """Check if a string is a palindrome."""
+    s = s.lower().replace(" ", "")
+    return s == s[::-1]
+
+# Test the function
+print(is_palindrome("A man a plan a canal Panama"))
+
+[[END]]
+
+def count_vowels(s):
+    """Count the number of vowels in a string."""
+    vowels = "aeiouAEIOU"
+    return sum(1 for char in s if char in vowels)
+
+# Count vowels in a sample text
+print(count_vowels("Hello World!"))
+
+[[END]]
+
+def factorial(n):
+    """Calculate the factorial of n recursively."""
+    if n == 0:
+        return 1
+    return n * factorial(n - 1)
+
+# Calculate the factorial of 5
+print(factorial(5))
+
+[[END]]
+
+def reverse_string(s):
+    """Return the reverse of a given string."""
+    return s[::-1]
+
+# Reverse a sample string
+print(reverse_string("Hello"))
+
+[[END]]

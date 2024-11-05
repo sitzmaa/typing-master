@@ -1,0 +1,62 @@
+def merge_sorted_arrays(arr1, arr2):
+    """Merge two sorted arrays into a single sorted array."""
+    merged = []
+    i = j = 0
+    while i < len(arr1) and j < len(arr2):
+        if arr1[i] < arr2[j]:
+            merged.append(arr1[i])
+            i += 1
+        else:
+            merged.append(arr2[j])
+            j += 1
+    merged.extend(arr1[i:])
+    merged.extend(arr2[j:])
+    return merged
+
+# Test merging sorted arrays
+arr1 = [1, 3, 5, 7]
+arr2 = [2, 4, 6, 8]
+print("Merged sorted array:", merge_sorted_arrays(arr1, arr2))
+[[END]]
+def count_vowels_consonants(s):
+    """Count vowels and consonants in a string."""
+    vowels = "aeiouAEIOU"
+    num_vowels = sum(1 for char in s if char in vowels)
+    num_consonants = sum(1 for char in s if char.isalpha() and char not in vowels)
+    return num_vowels, num_consonants
+
+# Count vowels and consonants
+text = "Hello, World!"
+vowels_count, consonants_count = count_vowels_consonants(text)
+print(f"Vowels: {vowels_count}, Consonants: {consonants_count}")
+[[END]]
+def rotate_array(arr, k):
+    """Rotate an array to the right by k steps."""
+    n = len(arr)
+    k %= n  # Handle cases where k > n
+    return arr[-k:] + arr[:-k]
+
+# Rotate array
+arr = [1, 2, 3, 4, 5]
+k = 2
+print(f"Array after rotating {k} steps to the right: {rotate_array(arr, k)}")
+[[END]]
+def simple_interest(principal, rate, time):
+    """Calculate simple interest."""
+    return (principal * rate * time) / 100
+
+# Calculate simple interest
+principal_amount = 1000
+interest_rate = 5
+time_period = 3
+interest = simple_interest(principal_amount, interest_rate, time_period)
+print(f"Simple Interest: {interest}")
+[[END]]
+def gcd(a, b):
+    """Calculate the Greatest Common Divisor (GCD) using the Euclidean algorithm."""
+    while b:
+        a, b = b, a % b
+    return a
+
+# Test GCD
+print(f"GCD of 48 and 18: {gcd(48, 18)}")

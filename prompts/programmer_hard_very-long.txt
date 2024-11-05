@@ -1,0 +1,79 @@
+def quicksort(arr):
+    """Sort an array using the quicksort algorithm."""
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quicksort(left) + middle + quicksort(right)
+
+# Test quicksort
+unsorted_array = [3, 6, 8, 10, 1, 2, 1]
+print("Sorted array:", quicksort(unsorted_array))
+[[END]]
+def binary_search(arr, target):
+    """Perform binary search on a sorted array."""
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] < target:
+            low = mid + 1
+        elif arr[mid] > target:
+            high = mid - 1
+        else:
+            return mid
+    return -1
+
+# Test binary search
+sorted_array = [1, 2, 3, 4, 5, 6]
+target_value = 4
+index = binary_search(sorted_array, target_value)
+print(f"Index of {target_value}: {index}")
+[[END]]
+def anagrams(word1, word2):
+    """Check if two words are anagrams of each other."""
+    return sorted(word1) == sorted(word2)
+
+# Test for anagrams
+word_a = "listen"
+word_b = "silent"
+print(f"Are '{word_a}' and '{word_b}' anagrams? {anagrams(word_a, word_b)}")
+[[END]]
+def sieve_of_eratosthenes(n):
+    """Return a list of prime numbers up to n using the Sieve of Eratosthenes."""
+    sieve = [True] * (n + 1)
+    sieve[0] = sieve[1] = False  # 0 and 1 are not prime numbers
+    for i in range(2, int(n ** 0.5) + 1):
+        if sieve[i]:
+            for j in range(i * i, n + 1, i):
+                sieve[j] = False
+    return [i for i in range(n + 1) if sieve[i]]
+
+# Find all primes up to 50
+print("Primes up to 50:", sieve_of_eratosthenes(50))
+[[END]]
+def longest_common_substring(s1, s2):
+    """Find the longest common substring between two strings."""
+    m, n = len(s1), len(s2)
+    longest = 0
+    ending_index = 0
+    length = [[0] * (n + 1) for _ in range(m + 1)]
+
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if s1[i - 1] == s2[j - 1]:
+                length[i][j] = length[i - 1][j - 1] + 1
+                if length[i][j] > longest:
+                    longest = length[i][j]
+                    ending_index = i
+            else:
+                length[i][j] = 0
+
+    return s1[ending_index - longest: ending_index]
+
+# Test longest common substring
+str1 = "abcdef"
+str2 = "zcdemf"
+print(f"Longest common substring: '{longest_common_substring(str1, str2)}'")
+[[END]]

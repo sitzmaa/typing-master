@@ -1,0 +1,61 @@
+def fibonacci(n):
+    """Generate a list of Fibonacci numbers up to the nth number."""
+    fib_sequence = []
+    a, b = 0, 1
+    for _ in range(n):
+        fib_sequence.append(a)
+        a, b = b, a + b
+    return fib_sequence
+
+# Generate Fibonacci sequence for n = 10
+n = 10
+print(f"Fibonacci sequence up to {n}: {fibonacci(n)}")
+[[END]]
+def is_palindrome(s):
+    """Check if a given string is a palindrome."""
+    s = s.lower().replace(" ", "")
+    return s == s[::-1]
+
+# Test if the string is a palindrome
+test_str = "A man a plan a canal Panama"
+print(f"Is '{test_str}' a palindrome? {is_palindrome(test_str)}")
+[[END]]
+def reverse_string(s):
+    """Reverse a given string."""
+    return s[::-1]
+
+# Reverse a string
+sample_string = "Hello, World!"
+reversed_string = reverse_string(sample_string)
+print(f"Reversed string: '{reversed_string}'")
+
+def factorial(n):
+    """Calculate the factorial of a given number."""
+    if n == 0 or n == 1:
+        return 1
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
+
+# Calculate factorial of 5
+num = 5
+print(f"Factorial of {num}: {factorial(num)}")
+[[END]]
+def find_max_min(arr):
+    """Find the maximum and minimum values in a list."""
+    if not arr:
+        return None, None
+    max_val = min_val = arr[0]
+    for num in arr:
+        if num > max_val:
+            max_val = num
+        if num < min_val:
+            min_val = num
+    return max_val, min_val
+
+# Test with an array
+numbers = [3, 1, 4, 1, 5, 9, 2, 6, 5]
+max_val, min_val = find_max_min(numbers)
+print(f"Maximum value: {max_val}, Minimum value: {min_val}")
+[[END]]

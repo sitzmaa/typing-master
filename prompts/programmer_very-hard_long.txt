@@ -1,0 +1,114 @@
+def sudoku_solver(board):
+    """Solve a Sudoku puzzle using backtracking."""
+    def is_valid(board, row, col, num):
+        for x in range(9):
+            if board[row][x] == num:
+                return False
+            if board[x][col] == num:
+                return False
+            if board[3 * (row // 3) + x // 3][3 * (col // 3) + x % 3] == num:
+                return False
+        return True
+
+    def solve(board):
+        for row in range(9):
+            for col in range(9):
+                if board[row][col] == 0:
+                    for num in range(1, 10):
+                        if is_valid(board, row, col, num):
+                            board[row][col] = num
+                            if solve(board):
+                                return True
+                            board[row][col] = 0
+                    return False
+        return True
+
+    solve(board)
+
+# Example Sudoku puzzle
+sudoku_board = [
+    [5, 3, 0, 0, 7, 0, 0, 0, 0],
+    [6, 0, 0, 1, 9, 5, 0, 0, 0],
+    [0, 9, 8, 0, 0, 0, 0, 6, 0],
+    [8, 0, 0, 0, 6, 0, 0, 0, 3],
+    [4, 0, 0, 8, 0, 3, 0, 0, 1],
+    [7, 0, 0, 0, 2, 0, 0, 0, 6],
+    [0, 6, 0, 0, 0, 0, 2, 8, 0],
+    [0, 0, 0, 4, 1, 9, 0, 0, 5],
+    [0, 0, 0, 0, 8, 0, 0, 7, 9],
+]
+
+sudoku_solver(sudoku_board)
+print("Solved Sudoku board:")
+for row in sudoku_board:
+    print(row)
+[[END]]
+def n_queens(n):
+    """Solve the N-Queens problem using backtracking."""
+    def is_not_under_attack(row, col):
+        for prev_row in range(row):
+            if (board[prev_row] == col or
+                board[prev_row] - prev_row == col - row or
+                board[prev_row] + prev_row == col + row):
+                return False
+        return True
+
+    def place_queen(row):
+        if row == n:
+            result.append(board[:])
+            return
+        for col in range(n):
+            if is_not_under_attack(row, col):
+                board[row] = col
+                place_queen(row + 1)
+
+    board = [-1] * n
+    result = []
+    place_queen(0)
+    return result
+
+# Solve N-Queens for n=4
+print("Solutions for 4-Queens:", n_queens(4))
+[[END]]
+def lcs(X, Y):
+    """Find the Longest Common Subsequence (LCS) of two strings."""
+    m, n = len(X), len(Y)
+    L = [[0] * (n + 1) for _ in range(m + 1)]
+    
+    for i in range(m + 1):
+        for j in range(n + 1):
+            if i == 0 or j == 0:
+                L[i][j] = 0
+            elif X[i - 1] == Y[j - 1]:
+                L[i][j] = L[i - 1][j - 1] + 1
+            else:
+                L[i][j] = max(L[i - 1][j], L[i][j - 1])
+    
+    return L[m][n]
+
+# Find LCS of two strings
+X = "AGGTAB"
+Y = "GXTXAYB"
+print(f"LCS length of {X} and {Y}: {lcs(X, Y)}")
+[[END]]
+def minimum_edit_distance(str1, str2):
+    """Calculate the minimum edit distance using dynamic programming."""
+    m, n = len(str1), len(str2)
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    
+    for i in range(m + 1):
+        for j in range(n + 1):
+            if i == 0:
+                dp[i][j] = j
+            elif j == 0:
+                dp[i][j] = i
+            elif str1[i - 1] == str2[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1]
+            else:
+                dp[i][j] = 1 + min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1])
+    
+    return dp[m][n]
+
+# Calculate edit distance
+print(f"Minimum edit distance between 'kitten' and 'sitting': {minimum_edit_distance('kitten', 'sitting')}")
+[[END]]

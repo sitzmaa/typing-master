@@ -1,0 +1,38 @@
+# This program calculates the sum of two numbers
+def add_numbers(num1, num2):
+    return num1 + num2
+
+# Taking user input
+number1 = float(input("Enter first number: "))
+number2 = float(input("Enter second number: "))
+result = add_numbers(number1, number2)
+print("The sum is:", result)
+[[END]]
+# This program reverses a string input by the user
+def reverse_string(s):
+    return s[::-1]
+
+user_input = input("Enter a string: ")
+print("Reversed string:", reverse_string(user_input))
+[[END]]
+# This program checks if a number is even or odd
+def is_even(num):
+    return num % 2 == 0
+
+number = int(input("Enter a number: "))
+print("The number is even." if is_even(number) else "The number is odd.")
+[[END]]
+# This program calculates the area of a rectangle
+def rectangle_area(length, width):
+    return length * width
+
+length = float(input("Enter length: "))
+width = float(input("Enter width: "))
+print("Area of the rectangle is:", rectangle_area(length, width))
+[[END]]
+# This program converts Celsius to Fahrenheit
+def celsius_to_fahrenheit(celsius):
+    return (celsius * 9/5) + 32
+
+celsius_temp = float(input("Enter temperature in Celsius: "))
+print("Temperature in Fahrenheit:", celsius_to_fahrenheit(celsius_temp))

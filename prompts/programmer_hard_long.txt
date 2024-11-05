@@ -1,0 +1,119 @@
+# This program implements a basic linked list
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def append(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        last_node = self.head
+        while last_node.next:
+            last_node = last_node.next
+        last_node.next = new_node
+
+    def display(self):
+        current_node = self.head
+        while current_node:
+            print(current_node.data, end=" -> ")
+            current_node = current_node.next
+        print("None")
+
+# Example usage
+ll = LinkedList()
+ll.append(1)
+ll.append(2)
+ll.append(3)
+ll.display()
+[[END]]
+# This program implements a basic stack with push and pop methods
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        return self.items.pop() if not self.is_empty() else None
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+    def peek(self):
+        return self.items[-1] if not self.is_empty() else None
+
+# Example usage
+stack = Stack()
+stack.push(5)
+stack.push(10)
+print("Popped item:", stack.pop())
+print("Top item:", stack.peek())
+[[END]]
+# This program implements a binary search algorithm
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+target = int(input("Enter a number to search: "))
+result = binary_search(numbers, target)
+print("Number found at index:" if result != -1 else "Number not found", result)
+[[END]]
+# This program implements a basic queue with enqueue and dequeue methods
+class Queue:
+    def __init__(self):
+        self.items = []
+
+    def enqueue(self, item):
+        self.items.insert(0, item)
+
+    def dequeue(self):
+        return self.items.pop() if not self.is_empty() else None
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+# Example usage
+queue = Queue()
+queue.enqueue(1)
+queue.enqueue(2)
+print("Dequeued item:", queue.dequeue())
+[[END]]
+# This program implements a simple text-based Tic-Tac-Toe game
+def print_board(board):
+    for row in board:
+        print(" | ".join(row))
+        print("-" * 5)
+
+def check_winner(board):
+    for row in board:
+        if row.count(row[0]) == len(row) and row[0] != ' ':
+            return True
+    for col in range(len(board)):
+        if all(board[row][col] == board[0][col] != ' ' for row in range(len(board))):
+            return True
+    if all(board[i][i] == board[0][0] != ' ' for i in range(len(board))) or \
+       all(board[i][len(board)-1-i] == board[0][len(board)-1] != ' ' for i in range(len(board))):
+        return True
+    return False
+
+# Example usage
+board = [[' ' for _ in range(3)] for _ in range(3)]
+# Players take turns to play (this is just a representation)
+print_board(board)
+[[END]]
